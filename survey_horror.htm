@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>☠️ Horror Survey Begins</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #f8f8f8;
+      font-family: "Courier New", monospace;
+      padding: 40px;
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      color: crimson;
+      text-shadow: 0 0 10px red;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    .glitch {
+      animation: glitch 0.3s infinite;
+      text-shadow: 2px 2px red, -2px -2px cyan;
+    }
+
+    .question {
+      display: none;
+      margin-top: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input, select, textarea, button {
+      margin-top: 10px;
+      background-color: #1a1a1a;
+      color: white;
+      border: 1px solid #444;
+      padding: 8px;
+      width: 300px;
+    }
+
+    button {
+      background-color: crimson;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="glitch">☠️ Horror Survey Begins...</h1>
+
+  <div id="question1" class="question" style="display:block">
+    <label>What's your name... in this realm?</label>
+    <input type="text" id="name">
+    <button onclick="nextQuestion(2)">Submit</button>
+  </div>
+
+  <div id="question2" class="question">
+    <label>What do you fear the most?</label>
+    <select id="fear">
+      <option value="darkness">The Darkness</option>
+      <option value="ghosts">Ghosts</option>
+      <option value="isolation">Isolation</option>
+      <option value="other">Something... else</option>
+    </select>
+    <button onclick="nextQuestion(3)">Submit</button>
+  </div>
+
+  <div id="question3" class="question">
+    <label>Tell us the most chilling thing you've ever experienced:</label>
+    <textarea id="story" rows="4" cols="50"></textarea>
+    <button onclick="nextQuestion(4)">Submit</button>
+  </div>
+
+  <div id="question4" class="question">
+    <label>Would you survive a night in a haunted mansion?</label>
+    <select id="survive">
+      <option value="yes">Yes... I think</option>
+      <option value="no">No. I'm already cold...</option>
+      <option value="maybe">Maybe... depends who’s with me</option>
+    </select>
+    <button onclick="nextQuestion(5)">Submit</button>
+  </div>
+
+  <div id="question5" class="question">
+    <h2 class="glitch">🎃 You've survived the survey. For now...</h2>
+    <p>Click below to escape... if you dare.</p>
+    <button onclick="window.location.href=''">Escape</button>
+  </div>
+
+  <script>
+    function quickGlitch() {
+      const body = document.body;
+      body.style.backgroundColor = "#fff";
+      body.style.color = "#000";
+      setTimeout(() => {
+        body.style.backgroundColor = "#0d0d0d";
+        body.style.color = "#f8f8f8";
+      }, 80);
+    }
+
+    function nextQuestion(number) {
+      document.getElementById("question" + number).style.display = "block";
+      quickGlitch();
+    }
+  </script>
+</body>
+</html>
